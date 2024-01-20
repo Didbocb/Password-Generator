@@ -19,7 +19,7 @@
                 <span class="popuptext" id="myPopup">Copied!</span>
             </div>
         </div>
-        <button><img src="images/generate.png">Generate Password</button>
+        <button class="button"><img src="images/generate.png">Generate Password</button>
     </div>
     <script>
         var slider = document.getElementById("myRange");
@@ -59,12 +59,17 @@
             });
         }
 
-        const button = document.querySelector('button');
+        const button = document.querySelector('.button');
         const password = document.querySelector('#password');
         const chars = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ!@#$%^&*()_+?><:{}[]';
         const charsLength = chars.length;
 
-        button.addEventListener('click', () => {
+        button.addEventListener('click', (e) => {
+            e.preventDefault();
+            button.classList.add("animate");
+            setTimeout(() => {
+                button.classList.remove("animate");
+            }, 600);
             let randomPassword = '';
             for(let i = 0; i < output.innerHTML; i++) {
                 randomPassword += chars.charAt(Math.floor(Math.random() * charsLength));
