@@ -14,7 +14,10 @@
         </div>
         <div class="display">
             <input type="text" id="password" placeholder="Password">
-            <img src="images/copy.png" onclick="copyPassword()">
+            <div class="popup">
+                <img src="images/copy.png" onclick="copyPassword()" class="bounce-animation">
+                <span class="popuptext" id="myPopup">Copied!</span>
+            </div>
         </div>
         <button><img src="images/generate.png">Generate Password</button>
     </div>
@@ -26,7 +29,34 @@
         // Update the current slider value (each time you drag the slider handle)
         slider.oninput = function() {
             output.innerHTML = this.value;
-            console.log(this.value); // Log the updated slider value to the console
+            console.log(this.value);
+        }
+
+        function showCopied() {
+            var popup = document.getElementById("myPopup");
+            if (popup.classList.contains("show")) {
+                return; // Exit the function if fade-out animation is already in progress
+            }
+            popup.classList.toggle("show");
+
+            function sleep(ms) {
+                return new Promise(resolve => setTimeout(resolve, ms));
+            }
+
+            // Wait for 1 second before hiding the popup
+            sleep(1000).then(() => {
+                // Gradually decrease the opacity of the popup
+                var opacity = 1;
+                var interval = setInterval(() => {
+                    opacity -= 0.01;
+                    popup.style.opacity = opacity;
+                    if (opacity <= 0) {
+                        clearInterval(interval);
+                        popup.classList.toggle("show"); // Hide the popup
+                        popup.style.opacity = 1; // Reset the opacity for future use
+                    }
+                }, 10);
+            });
         }
 
         const button = document.querySelector('button');
@@ -45,6 +75,18 @@
         function copyPassword() {
             password.select();
             document.execCommand('copy');
+            showCopied();
+
+            // Get the image element
+            var img = document.querySelector('.bounce-animation');
+
+            // Add the "bouncing" class to the image
+            img.classList.add('bouncing');
+
+            // Remove the "bouncing" class after the animation has completed
+            setTimeout(function() {
+                img.classList.remove('bouncing');
+            }, 1000); // The duration of the animation is 1s (1000ms)
         }
     </script>
 </body>
