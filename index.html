@@ -8,6 +8,10 @@
 <body>
     <div class="container">
         <h1>Generate a <br><span>Random Password</span></h1>
+        <div class="slidecontainer">
+            <input type="range" min="8" max="24" value="16" class="slider" id="myRange">
+            <h2>Length of Password: <span id="length"></span></h2>
+        </div>
         <div class="display">
             <input type="text" id="password" placeholder="Password">
             <img src="images/copy.png" onclick="copyPassword()">
@@ -15,6 +19,16 @@
         <button><img src="images/generate.png">Generate Password</button>
     </div>
     <script>
+        var slider = document.getElementById("myRange");
+        var output = document.getElementById("length");
+        output.innerHTML = slider.value; // Display the default slider value
+
+        // Update the current slider value (each time you drag the slider handle)
+        slider.oninput = function() {
+            output.innerHTML = this.value;
+            console.log(this.value); // Log the updated slider value to the console
+        }
+
         const button = document.querySelector('button');
         const password = document.querySelector('#password');
         const chars = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ!@#$%^&*()_+?><:{}[]';
@@ -22,7 +36,7 @@
 
         button.addEventListener('click', () => {
             let randomPassword = '';
-            for(let i = 0; i < 14; i++) {
+            for(let i = 0; i < output.innerHTML; i++) {
                 randomPassword += chars.charAt(Math.floor(Math.random() * charsLength));
             }
             password.value = randomPassword;
