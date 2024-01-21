@@ -1,22 +1,25 @@
-*{
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap');
+
+* {
     margin: 0;
     padding: 0;
     font-family: 'Poppins', sans-serif;
     box-sizing: border-box;
 }
 
-body{
+body {
     background: #002339;
     color: #fff;
 }
 
-.container{
-    margin: 12%;
+.container {
+    position: relative;
+    margin: 5% 5%;
     width: 90%;
     max-width: 700px;
 }
 
-.display{
+.display {
     width: 100%;
     margin-top: 50px;
     margin-bottom: 30px;
@@ -29,35 +32,35 @@ body{
     border-radius: 5px;
 }
 
-.container h1{
+.container h1 {
     font-weight: 500;
     font-size: 45px;
 }
 
-.container h1 span{
+.container h1 span {
     color: #019f55;
     border-bottom: 4px solid #019f55;
     padding-bottom: 7px;
 }
 
-.display img{
+.display img {
     width: 30px;
     cursor: pointer;
 }
 
-.display input{
+.display input {
     border: 0;
     outline: 0;
     width: 100%;
     font-size: 24px;
 }
 
-.container button img{
+.container button img {
     width: 28px;
     margin-right: 10px;
 }
 
-.button{
+.button {
     border: 0;
     outline: 0;
     position: relative;
@@ -75,12 +78,12 @@ body{
     transition: transform 0.2s ease;
 }
 
-.button:active{
+.button:active {
     transform: scale(0.96);
 }
 
 .button::before,
-.button::after{
+.button::after {
     content: "";
     position: absolute;
     left: 50%;
@@ -91,7 +94,7 @@ body{
     background-repeat: no-repeat;
 }
 
-.button.animate::before{
+.button.animate::before {
     top: -70%;
     background-image: radial-gradient(circle, #019f55 20%, transparent 20%),
         radial-gradient(circle, transparent 20%, #019f55 20%, transparent 30%),
@@ -102,44 +105,46 @@ body{
         radial-gradient(circle, #019f55 20%, transparent 20%);
     background-size: 10% 10%, 20% 20%, 15% 15%, 20% 20%, 18% 18%, 10% 10%, 15% 15%,
         18% 18%;
-    background-position: 5% 90%, 10% 90%, 10% 90%, 15% 90%, 25% 90%, 25% 90%, 
+    background-position: 5% 90%, 10% 90%, 10% 90%, 15% 90%, 25% 90%, 25% 90%,
         40% 90%, 55% 90%, 70% 90%;
     animation: topBubbles 0.6s ease-in-out infinite;
 }
 
-@keyframes topBubbles{
+@keyframes topBubbles {
     50% {
-        background-position: 0% 80%, 0% 20%, 10% 40%, 20% 0%, 30% 30%, 22% 50%, 
+        background-position: 0% 80%, 0% 20%, 10% 40%, 20% 0%, 30% 30%, 22% 50%,
             50% 50%, 65% 20%, 90% 30%;
     }
-    100%{
-        background-position: 0% 70%, 0% 10%, 10% 30%, 20% -10%, 30% 20%, 22% 40%, 
+
+    100% {
+        background-position: 0% 70%, 0% 10%, 10% 30%, 20% -10%, 30% 20%, 22% 40%,
             50% 40%, 65% 10%, 90% 20%;
-        background-size: 0% 0%, 0% 0%, 0% 0%,  0% 0%, 0% 0%, 0% 0%;
+        background-size: 0% 0%, 0% 0%, 0% 0%, 0% 0%, 0% 0%, 0% 0%;
     }
 }
 
-.button.animate::after{
+.button.animate::after {
     bottom: -70%;
     background-image: radial-gradient(circle, #019f55 20%, transparent 20%),
-    radial-gradient(circle, transparent 10%, #019f55 15%, transparent 20%),
-    radial-gradient(circle, #019f55 20%, transparent 20%),
-    radial-gradient(circle, #019f55 20%, transparent 20%),
-    radial-gradient(circle, #019f55 20%, transparent 20%),
+        radial-gradient(circle, transparent 10%, #019f55 15%, transparent 20%),
+        radial-gradient(circle, #019f55 20%, transparent 20%),
+        radial-gradient(circle, #019f55 20%, transparent 20%),
+        radial-gradient(circle, #019f55 20%, transparent 20%),
         radial-gradient(circle, #019f55 20%, transparent 20%),
         radial-gradient(circle, #019f55 20%, transparent 20%);
-        background-size: 15% 15%, 20% 20%, 18% 18%, 20% 20%, 15% 15%, 20% 20%, 18% 18%;
-        background-position: 10% 0%, 30% 10%, 55% 0%, 70% 0, 85% 0%, 70% 0%, 70% 0%;
-        animation: bottomBubbles 0.6s ease-in-out infinite;
+    background-size: 15% 15%, 20% 20%, 18% 18%, 20% 20%, 15% 15%, 20% 20%, 18% 18%;
+    background-position: 10% 0%, 30% 10%, 55% 0%, 70% 0, 85% 0%, 70% 0%, 70% 0%;
+    animation: bottomBubbles 0.6s ease-in-out infinite;
 }
 
 @keyframes bottomBubbles {
     50% {
-        background-position: 0% 80%, 20% 80%, 45% 60%, 60% 100%, 75% 70%, 95% 60%, 
+        background-position: 0% 80%, 20% 80%, 45% 60%, 60% 100%, 75% 70%, 95% 60%,
             105% 0%;
     }
-    100%{
-        background-position: 0% 90%, 20% 90%, 45% 70%, 60% 110%, 75% 80%, 95% 70%, 
+
+    100% {
+        background-position: 0% 90%, 20% 90%, 45% 70%, 60% 110%, 75% 80%, 95% 70%,
             105% 0%;
         background-size: 0% 0%, 0% 0%, 0% 0%, 0% 0%, 0% 0%, 0% 0%;
     }
@@ -147,7 +152,7 @@ body{
 
 .slidecontainer {
     margin-top: 50px;
-    width: 100%; /* Width of the outside container */
+    width: 100%;
 }
 
 .slider {
@@ -162,14 +167,12 @@ body{
     -webkit-transition: .2s;
     transition: opacity .2s;
 }
-  
-  /* Mouse-over effects */
-  .slider:hover {
-    opacity: 1; /* Fully shown on mouse-over */
-  }
-  
-  /* The slider handle (use -webkit- (Chrome, Opera, Safari, Edge) and -moz- (Firefox) to override default look) */
-  .slider::-webkit-slider-thumb {
+
+.slider:hover {
+    opacity: 1;
+}
+
+.slider::-webkit-slider-thumb {
     -webkit-appearance: none;
     appearance: none;
     width: 25px;
@@ -177,24 +180,22 @@ body{
     border-radius: 25px;
     background: #019f55;
     cursor: pointer;
-  }
-  
-  .slider::-moz-range-thumb {
+}
+
+.slider::-moz-range-thumb {
     width: 25px;
     height: 25px;
     background: #019f55;
     cursor: pointer;
-  }
+}
 
-/* Popup container */
 .popup {
     position: relative;
     display: inline-block;
     cursor: pointer;
-  }
-  
-  /* The actual popup (appears on top) */
-  .popup .popuptext {
+}
+
+.popup .popuptext {
     visibility: hidden;
     width: 160px;
     background-color: #555;
@@ -207,10 +208,9 @@ body{
     bottom: 125%;
     left: 50%;
     margin-left: -80px;
-  }
-  
-  /* Popup arrow */
-  .popup .popuptext::after {
+}
+
+.popup .popuptext::after {
     content: "";
     position: absolute;
     top: 100%;
@@ -219,42 +219,151 @@ body{
     border-width: 5px;
     border-style: solid;
     border-color: #555 transparent transparent transparent;
-  }
-  
-  /* Toggle this class when clicking on the popup container (hide and show the popup) */
-  .popup .show {
+}
+
+.popup .show {
     visibility: visible;
     -webkit-animation: fadeIn 1s;
     animation: fadeIn 1s
-  }
-  
-  /* Add animation (fade in the popup) */
-  @-webkit-keyframes fadeIn {
-    from {opacity: 0;}
-    to {opacity: 1;}
-  }
-  
-  @keyframes fadeIn {
-    from {opacity: 0;}
-    to {opacity:1 ;}
-  }
+}
+
+@-webkit-keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
 
 .bounce-animation {
-    animation: none; /* Remove the animation property */
+    animation: none;
 }
 
 .bounce-animation.bouncing {
-    animation: bounce 1s infinite; /* Apply the animation only when the element has the "bouncing" class */
+    animation: bounce 1s infinite;
 }
 
 @keyframes bounce {
     0% {
         transform: translateY(0);
     }
+
     50% {
         transform: translateY(-10px);
     }
+
     100% {
         transform: translateY(0);
     }
+}
+
+.select-btn {
+    margin-top: 5%;
+    display: flex;
+    height: 50px;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 16px;
+    border-radius: 8px;
+    cursor: pointer;
+    background-color: #fff;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+}
+
+.select-btn .btn-text {
+    font-size: 17px;
+    font-weight: 400;
+    color: #333;
+}
+
+.select-btn .arrow-dwn {
+    display: flex;
+    height: 21px;
+    width: 21px;
+    color: #fff;
+    font-size: 14px;
+    border-radius: 50%;
+    background: #019f55;
+    align-items: center;
+    justify-content: center;
+    transition: 0.3s;
+}
+
+.select-btn.open .arrow-dwn {
+    transform: rotate(-180deg);
+}
+
+.list-items {
+    position: relative;
+    margin-top: 15px;
+    border-radius: 8px;
+    padding: 16px;
+    background-color: #fff;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+    display: none;
+}
+
+.select-btn.open~.list-items {
+    display: block;
+}
+
+.list-items .item {
+    display: flex;
+    align-items: center;
+    list-style: none;
+    height: 50px;
+    cursor: pointer;
+    transition: 0.3s;
+    padding: 0 15px;
+    border-radius: 8px;
+}
+
+.list-items .item:hover {
+    background-color: #e7edfe;
+}
+
+.item .item-text {
+    font-size: 16px;
+    font-weight: 400;
+    color: #333;
+}
+
+.item .checkbox {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 16px;
+    width: 16px;
+    border-radius: 4px;
+    margin-right: 12px;
+    border: 1.5px solid #c0c0c0;
+    transition: all 0.3s ease-in-out;
+}
+
+.item.checked .checkbox {
+    background-color: #019f55;
+    border-color: #019f55;
+}
+
+.checkbox .check-icon {
+    color: #fff;
+    font-size: 11px;
+    transform: scale(0);
+    transition: all 0.2s ease-in-out;
+}
+
+.item.checked .check-icon {
+    transform: scale(1);
 }
