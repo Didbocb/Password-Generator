@@ -53,7 +53,13 @@
                 <span class="popuptext" id="myPopup">Copied!</span>
             </div>
         </div>
-        <button class="button"><img src="images/generate.png">Generate Password</button>
+        <div class="button-container">
+            <button class="button"><img src="images/generate.png">Generate Password</button>
+            <div class="new-password-container">
+                <input type="text" id="todo-input" class="input" placeholder="Password Name">
+                <button class="input-btn"><img src="images/save.png">Save Password</button>
+            </div>
+        </div>
     </div>
     <script>
         const selectBtn = document.querySelector(".select-btn"),
