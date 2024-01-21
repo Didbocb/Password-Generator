@@ -9,58 +9,75 @@
 
 <body>
     <div class="container">
-        <h1>Generate a <br><span>Random Password</span></h1>
-        <div class="slidecontainer">
-            <input type="range" min="8" max="24" value="16" class="slider" id="myRange">
-            <h2>Length of Password: <span id="length"></span></h2>
-        </div>
-        <div class="select-btn">
-            <span class="btn-text">Select Options</span>
-            <span class="arrow-dwn">
-                <i class="fa-solid fa-chevron-down"></i>
-            </span>
-        </div>
-        <ul class="list-items">
-            <li class="item">
-                <span class="checkbox">
-                    <i class="fa-solid fa-check check-icon"></i>
+        <div class="generate-container">
+            <h1>Generate a <br><span>Random Password</span></h1>
+            <div class="slidecontainer">
+                <input type="range" min="8" max="24" value="16" class="slider" id="myRange">
+                <h2>Length of Password: <span id="length"></span></h2>
+            </div>
+            <div class="select-btn">
+                <span class="btn-text">Select Options</span>
+                <span class="arrow-dwn">
+                    <i class="fa-solid fa-chevron-down"></i>
                 </span>
-                <span class="item-text">Uppercase</span>
-            </li>
-            <li class="item">
-                <span class="checkbox">
-                    <i class="fa-solid fa-check check-icon"></i>
-                </span>
-                <span class="item-text">Lowercase</span>
-            </li>
-            <li class="item">
-                <span class="checkbox">
-                    <i class="fa-solid fa-check check-icon"></i>
-                </span>
-                <span class="item-text">Numbers</span>
-            </li>
-            <li class="item">
-                <span class="checkbox">
-                    <i class="fa-solid fa-check check-icon"></i>
-                </span>
-                <span class="item-text">Symbols</span>
-            </li>
-        </ul>
-        <div class="display">
-            <input type="text" id="password" placeholder="Password">
-            <div class="popup">
-                <img src="images/copy.png" onclick="copyPassword()" class="bounce-animation">
-                <span class="popuptext" id="myPopup">Copied!</span>
+            </div>
+            <ul class="list-items">
+                <li class="item">
+                    <span class="checkbox">
+                        <i class="fa-solid fa-check check-icon"></i>
+                    </span>
+                    <span class="item-text">Uppercase</span>
+                </li>
+                <li class="item">
+                    <span class="checkbox">
+                        <i class="fa-solid fa-check check-icon"></i>
+                    </span>
+                    <span class="item-text">Lowercase</span>
+                </li>
+                <li class="item">
+                    <span class="checkbox">
+                        <i class="fa-solid fa-check check-icon"></i>
+                    </span>
+                    <span class="item-text">Numbers</span>
+                </li>
+                <li class="item">
+                    <span class="checkbox">
+                        <i class="fa-solid fa-check check-icon"></i>
+                    </span>
+                    <span class="item-text">Symbols</span>
+                </li>
+            </ul>
+            <div class="display">
+                <input type="text" id="password" placeholder="Password">
+                <div class="popup">
+                    <img src="images/copy.png" onclick="copyPassword()" class="bounce-animation">
+                    <span class="popuptext" id="myPopup">Copied!</span>
+                </div>
+            </div>
+            <div class="button-container">
+                <button class="button"><img src="images/generate.png">Generate Password</button>
             </div>
         </div>
-        <div class="button-container">
-            <button class="button"><img src="images/generate.png">Generate Password</button>
-            <div class="new-password-container">
-                <input type="text" id="todo-input" class="input" placeholder="Password Name">
-                <button class="input-btn"><img src="images/save.png">Save Password</button>
+        <div class="password-container">
+
+            <h1 class="title">Password List</h1>
+    
+    
+            <div class="password-list">
+
+                <div class="passwords"></div>
+    
+                <div class="new-password-container">
+                    <input type="text" id="password-input" class="input" placeholder="Password Name">
+                    <button class="input-btn" id="new-password-btn"><img src="images/save.png">Save Password</button>
+                </div>
+
             </div>
+
         </div>
     </div>
+    <script type="module" src="main.js"></script>
+    <script type="module" src="firebaseConfig.js"></script>
     <script>
         const selectBtn = document.querySelector(".select-btn"),
             items = document.querySelectorAll(".item");

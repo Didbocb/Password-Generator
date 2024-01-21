@@ -1,12 +1,12 @@
 import { db } from "../../firebaseConfig.js";
 import { collection, getDocs } from "https://www.gstatic.com/firebasejs/10.5.2/firebase-firestore.js";
 
-export async function fetchAllToDoItems(userId) {
+export async function fetchAllPasswords(userId) {
     try {
-        const passwordCollection = collection(db, `password-list-${userId}`);
+        const userPasswordListCollection = collection(db, `password-list-${userId}`);
 
         // get all the documents in the user specified collection
-        const querySnapshot = await getDocs(passwordCollection);
+        const querySnapshot = await getDocs(userPasswordListCollection);
 
         // extract the data from each document and and return the data from each document
         const passwords = querySnapshot.docs.map((doc) => doc.data());

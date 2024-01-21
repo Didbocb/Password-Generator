@@ -1,9 +1,9 @@
 import { collection, setDoc, doc } from "https://www.gstatic.com/firebasejs/10.5.2/firebase-firestore.js";
 import { db } from "../../firebaseConfig.js";
 
-export async function storeToDoItem(userId, userEmail, passwordText) {
+export async function storePassword(userId, userEmail, passwordText) {
     try {
-        const passwordCollection = collection(db, `password-list-${userId}`);
+        const userPasswordListCollection = collection(db, `password-list-${userId}`);
 
         // generate a unique id for the document and assemble our data into an object
         const docUniqueId = generateUniqueId();
@@ -17,17 +17,17 @@ export async function storeToDoItem(userId, userEmail, passwordText) {
         };
 
         // store the following data in a document the specified user collection
-        // userTodoListCollection -> the collection we store into
+        // userPasswordListCollection -> the collection we store into
         // docUniqueId -> the name of our document
         // data -> the data object the document will contain
-        await setDoc(doc(passwordCollection, docUniqueId), data);
+        await setDoc(doc(userPasswordListCollection, docUniqueId), data);
     } catch (error) {
         console.error("Error storing data:", error);
         throw new Error("Failed to store item");
     }
 }
 
-// helper function for storeToDoItem that generates a unique Id
+// helper function for storePassword that generates a unique Id
 // we need this so that we can get a referance each document
 function generateUniqueId() {
     const timestamp = new Date().getTime();

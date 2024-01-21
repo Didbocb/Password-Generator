@@ -1,9 +1,9 @@
 import { auth } from "./firebaseConfig.js";
 
 // import utility functions (to make it easier for us to write code in main)
-import { storeToDoItem } from "./utilities/database/StoreToDoItem.js";
-import { fetchAllToDoItems } from "./utilities/database/FetchAllToDoItems.js";
-import { deleteToDoItem } from "./utilities/database/DeleteToDoItem.js";
+import { storePassword } from "./utilities/database/storePassword.js";
+import { fetchAllPasswords } from "./utilities/database/FetchPasswords.js";
+import { deletePassword } from "./utilities/database/DeletePassword.js";
 
 /*
   HANDLES USER AUTHENTICATION FOR index.html PAGE
@@ -14,7 +14,7 @@ document.addEventListener("DOMContentLoaded", () => {
         // if the user is signed in load their todo list
         if (user) {
             const userId = auth.currentUser.uid;
-            fetchAndDisplayAllToDoItems(userId);
+            fetchAndDisplayAllPasswords(userId);
             console.log("User is authenticated - index.html");
         }
         // if not re-route them to the signin page
@@ -25,78 +25,78 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 /*
-  HANDLES DISPLAYING ALL PASSWORD ITEMS ON THE WEBSITE (used in fetchAndDisplayAllToDoItems)
+    HANDLES DISPLAYING ALL PASSWORD ITEMS ON THE WEBSITE (used in fetchAndDisplayAllToDoItems)
 */
-function displayPasswordItems(userId, passwordItems) {
+function displayPasswords(userId, passwords) {
     /*
-      Iterates through all the todoItems and display them on the UI.
-      todoItems are passed into this fucntion.
+        Iterates through all the todoItems and display them on the UI.
+        todoItems are passed into this fucntion.
 
-      don't spend to much time worrying what this function's purpose is.
-      All you need to know is that it handles displaying the data the user creates and stores.
-      The main focus of this workshop is Firebase and how we can use the database and authentication
+        don't spend to much time worrying what this function's purpose is.
+        All you need to know is that it handles displaying the data the user creates and stores.
+        The main focus of this workshop is Firebase and how we can use the database and authentication
     */
 
     // get the HTML element that will contain the todo items
-    const passwordsContainer = document.querySelector(".password-items");
-    passwordContainer.innerHTML = ""; // clear/empty the items container
+    const passwordsContainer = document.querySelector(".passwords");
+    passwordsContainer.innerHTML = ""; // clear/empty the items container
 
     // iterate through all todo items, creating a UI component for each item
-    passwordItems.forEach((element) => {
+    passwords.forEach((element) => {
         // creates the main <div> that holds the todo item
         const itemDiv = document.createElement("div");
-        itemDiv.className = "item";
+        itemDiv.className = "password";
 
         // creates a <div> for the bullet
         const bulletDiv = document.createElement("div");
         bulletDiv.className = "bullet";
 
         // creates the <div> that holds the text for the todo item
-        const passwordText = document.createElement("div");
-        passwordText.className = "password-text";
-        passwordText.textContent = element.itemText;
+        const passwordName = document.createElement("div");
+        passwordName.className = "password-name";
+        passwordName.textContent = element.passwordName; // Assign the correct value to the textContent property
 
         // creates the remove button for the todo item
         const removeButton = document.createElement("button");
         removeButton.textContent = "Remove";
         removeButton.className = "removeBtn";
 
-        // functinality for the remove button
+        // functionality for the remove button
         removeButton.onclick = () => {
-            deleteToDoItem(userId, element.uid); // handles deleting the list item document in the database
-            fetchAndDisplayAllToDoItems(userId); // re-fetch the data and update UI since we deleted a list item
+            deletePassword(userId, element.uid); // handles deleting the list item document in the database
+            fetchAndDisplayAllPasswords(userId); // re-fetch the data and update UI since we deleted a list item
         };
 
         // appends the bullet, text, and button to the todo item <div> (that we created first)
         itemDiv.appendChild(bulletDiv);
-        itemDiv.appendChild(passwordText);
+        itemDiv.appendChild(passwordName);
         itemDiv.appendChild(removeButton);
 
         // append the todo item <div> to the container that holds all the todo items
-        itemsContainer.appendChild(itemDiv);
+        passwordsContainer.appendChild(itemDiv);
     });
 }
 
 /*
   HANDLES FETCHING ALL TODO ITEMS FOR THE DATABASE AND DISPLAYING THEM ON THE WEBSITE
 */
-function fetchAndDisplayAllToDoItems(userId) {
+function fetchAndDisplayAllPasswords(userId) {
     /*
       Calls the fetchAllToDoItems API that gets all the todoItems. 
       Then we display the todo items after the request is completed. (the .then() )
       We also catch any errors that may occur in the request
     */
 
-    fetchAllToDoItems(userId) // we call our method that fetches from our database
-        .then((todoItems) => {
+    fetchAllPasswords(userId) // we call our method that fetches from our database
+        .then((passwords) => {
             // .then() means we're waiting for the request to finish, then we can proceed with the below logic...
 
-            console.log("Raw Data from fetchAllToDoItems shown below");
-            console.log(passwordItems); // to see the raw data that is fetched, open the console with Inspect Element
+            console.log("Raw Data from fetchAllPasswords shown below");
+            console.log(passwords); // to see the raw data that is fetched, open the console with Inspect Element
 
             // call a helper function to loop through all the documents fetched from
             // our database and display them on the frontend
-            displayToDoItems(userId, passwordItems);
+            displayPasswords(userId, passwords);
         })
         .catch((error) => {
             // catch any erros and print them to the console
@@ -107,7 +107,7 @@ function fetchAndDisplayAllToDoItems(userId) {
 /*
   HANDLES ADDING ITEM TO TODO LIST
 */
-function handleItemAdd() {
+function handlePasswordAdd() {
     /*
       Invoked when the user clicks the 'Add' button.
       This function handles all logic when the user adds a todo item 
@@ -116,11 +116,11 @@ function handleItemAdd() {
 
     // get user input from input field
     const textInput = document.getElementById("password-input");
-    const passwordItemText = textInput.value.trim(); // removes any extra white space
+    const passwordName = textInput.value.trim(); // removes any extra white space
 
     // validate input exists
-    if (passwordItemText === "") {
-        console.log("No todo item entered");
+    if (passwordName === "") {
+        console.log("No passwords entered");
         return;
     }
 
@@ -142,7 +142,7 @@ function handleItemAdd() {
     1) userID
     2) userEmail 
     3) todoItemText*/
-    storeToDoItem(userId, userEmail, passwordItemText);
+    storePassword(userId, userEmail, passwordName);
 
     // clear the input value after storing the data
     textInput.value = "";
@@ -157,7 +157,7 @@ function handleItemAdd() {
     parameters:
     1) userID 
     */
-   fetchAndDisplayAllToDoItems(userId);
+   fetchAndDisplayAllPasswords(userId);
 }
 
-document.getElementById("new-password-btn").addEventListener("click", handleItemAdd);
+document.getElementById("new-password-btn").addEventListener("click", handlePasswordAdd);
