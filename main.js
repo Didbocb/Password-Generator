@@ -54,7 +54,7 @@ function displayPasswords(userId, passwords) {
         // creates the <div> that holds the text for the todo item
         const passwordName = document.createElement("div");
         passwordName.className = "password-name";
-        passwordName.textContent = element.passwordName; // Assign the correct value to the textContent property
+        passwordName.textContent = element.passwordText; // Assign the correct value to the textContent property
 
         // creates the remove button for the todo item
         const removeButton = document.createElement("button");
