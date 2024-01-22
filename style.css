@@ -421,7 +421,7 @@ body {
 .passwords {
     
     padding: 1.5rem;
-    width: 100%;
+    width: 110%;
     border-radius: 10px;
     display: flex;
     flex-direction: column;
@@ -430,6 +430,8 @@ body {
 }
 
 .password {
+    background-color: #fff;
+    color: black;
     display: flex; 
     align-items: center; 
     box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.2);
