@@ -1,5 +1,5 @@
 # Password-Generator
-A simple random password generator made with HTML, CSS and JavaScript.
+A simple random password generator made with HTML, CSS and JavaScript. Uses FireBase for user authentication and database.
 
 # Resources/Assets-Used
 - https://www.codingnepalweb.com/multiple-options-select-menu-javascript/
