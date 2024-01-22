@@ -1,7 +1,7 @@
 import { collection, setDoc, doc } from "https://www.gstatic.com/firebasejs/10.5.2/firebase-firestore.js";
 import { db } from "../../firebaseConfig.js";
 
-export async function storePassword(userId, userEmail, passwordText) {
+export async function storePassword(userId, userEmail, passwordText, passwordCode) {
     try {
         const userPasswordListCollection = collection(db, `password-list-${userId}`);
 
@@ -13,6 +13,7 @@ export async function storePassword(userId, userEmail, passwordText) {
             userId: userId,
             email: userEmail,
             passwordText: passwordText,
+            passwordCode: passwordCode,
             uid: docUniqueId,
         };
 

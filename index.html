@@ -191,6 +191,12 @@
                 randomPassword += chars.charAt(Math.floor(Math.random() * chars.length));
             }
             password.value = randomPassword;
+
+            // Create a custom event with the generated password as detail
+            const passwordEvent = new CustomEvent('passwordGenerated', { detail: randomPassword });
+
+            // Dispatch the event
+            window.dispatchEvent(passwordEvent);
         });
 
         function copyPassword() {

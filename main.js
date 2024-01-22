@@ -44,6 +44,7 @@ function displayPasswords(userId, passwords) {
     // iterate through all todo items, creating a UI component for each item
     passwords.forEach((element) => {
         // creates the main <div> that holds the todo item
+        let newPassword = null;
         const itemDiv = document.createElement("div");
         itemDiv.className = "password";
 
@@ -55,6 +56,18 @@ function displayPasswords(userId, passwords) {
         const passwordName = document.createElement("div");
         passwordName.className = "password-name";
         passwordName.textContent = element.passwordText; // Assign the correct value to the textContent property
+
+        // creates a <div> for the bullet
+        const bulletDiv2 = document.createElement("div");
+        bulletDiv2.className = "bullet";
+
+        window.addEventListener('passwordGenerated', (event) => {
+          // The generated password is in event.detail
+          newPassword = event.detail;
+        });
+        newPassword = document.createElement("div");
+        newPassword.className = "password-code";
+        newPassword.textContent = element.passwordCode;
 
         // creates the remove button for the todo item
         const removeButton = document.createElement("button");
@@ -70,6 +83,8 @@ function displayPasswords(userId, passwords) {
         // appends the bullet, text, and button to the todo item <div> (that we created first)
         itemDiv.appendChild(bulletDiv);
         itemDiv.appendChild(passwordName);
+        itemDiv.appendChild(bulletDiv2);
+        itemDiv.appendChild(newPassword);
         itemDiv.appendChild(removeButton);
 
         // append the todo item <div> to the container that holds all the todo items
@@ -117,6 +132,7 @@ function handlePasswordAdd() {
     // get user input from input field
     const textInput = document.getElementById("password-input");
     const passwordName = textInput.value.trim(); // removes any extra white space
+    const passwordCode = document.getElementById("password").value.trim();
 
     // validate input exists
     if (passwordName === "") {
@@ -142,7 +158,7 @@ function handlePasswordAdd() {
     1) userID
     2) userEmail 
     3) todoItemText*/
-    storePassword(userId, userEmail, passwordName);
+    storePassword(userId, userEmail, passwordName, passwordCode);
 
     // clear the input value after storing the data
     textInput.value = "";
