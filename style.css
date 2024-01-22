@@ -14,9 +14,9 @@ body {
 
 .container {
     position: relative;
-    margin: -3% 7%;
+    margin: 5% 10%;
     width: 100%;
-    max-width: 1800px;
+    max-width: 2000px;
     display: flex;
     justify-content: space-between;
 }
