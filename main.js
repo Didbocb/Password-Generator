@@ -1,7 +1,7 @@
 import { auth } from "./firebaseConfig.js";
 
 // import utility functions (to make it easier for us to write code in main)
-import { storePassword } from "./utilities/database/storePassword.js";
+import { storePassword } from "./utilities/database/StorePassword.js";
 import { fetchAllPasswords } from "./utilities/database/FetchPasswords.js";
 import { deletePassword } from "./utilities/database/DeletePassword.js";
 
