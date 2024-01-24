@@ -11,8 +11,6 @@
 body {
     background-color: #002339;
     color: #fff;
-    margin: 0;
-    padding: 0;
 }
 
 .container {
@@ -20,16 +18,9 @@ body {
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    height: 100vh;
-    padding: 20px;
+    height: 100%;
+    padding: 10px;
     text-align: center;
-}
-
-.title {
-    font-size: 36px;
-    margin-bottom: 20px;
-    color: #fff;
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
 }
 
 .description {
@@ -87,6 +78,7 @@ body {
     color: #019f55;
     border-bottom: 4px solid #019f55;
     padding-bottom: 7px;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
 }
 
 .display img {
