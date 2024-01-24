@@ -9,17 +9,53 @@
 }
 
 body {
-    background: #002339;
+    background-color: #002339;
     color: #fff;
+    margin: 0;
+    padding: 0;
 }
 
 .container {
-    position: relative;
-    margin: 5% 10%;
-    width: 100%;
-    max-width: 2000px;
     display: flex;
-    justify-content: space-between;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    padding: 20px;
+    text-align: center;
+}
+
+.title {
+    font-size: 36px;
+    margin-bottom: 20px;
+    color: #fff;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+.description {
+    font-size: 20px;
+    margin-bottom: 20px;
+    color: #fff;
+}
+
+.signInBtn {
+    padding: 10px 20px;
+    font-size: 18px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.signInBtn:hover {
+    background-color: #45a049;
+}
+
+.signInBtn:focus {
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(76, 175, 80, 0.3);
 }
 
 .generate-container {
@@ -27,7 +63,6 @@ body {
     margin: 5% 5%;
     width: 100%;
     max-width: 700px;
-
 }
 
 .display {
@@ -379,17 +414,7 @@ body {
     transform: scale(1);
 }
 
-/*Saved Passwords css*/
-.signInBtn{
-
-    background-color: #019f55;
-    color: #fff;
-    padding: 15px 25px 15px 25px;
-    border: none;
-    cursor: pointer;
-    font-size: 24px;
-    border-radius: 10px;
-}
+/* Saved Passwords CSS */
 
 .button-container {
     display: flex;
@@ -406,126 +431,116 @@ body {
     border-radius: 20px;
     text-align: center;
     display: flex;
-    flex-direction: column;   
-    align-items: center;      
-    justify-content: center;  
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
     box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.2);
 }
 
 .new-password-container {
-    display: flex; 
+    display: flex;
     margin: 1rem 0;
-    
 }
 
 .passwords {
-    
     padding: 1.5rem;
-    width: 110%;
+    width: 100%;
     border-radius: 10px;
     display: flex;
     flex-direction: column;
     gap: 20px;
-
 }
 
 .password {
     background-color: #fff;
     color: black;
-    display: flex; 
-    align-items: center; 
+    display: flex;
+    align-items: center;
     box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.2);
-    border-radius: 10px; 
-    padding: 10px; 
-    gap: 10px; 
+    border-radius: 10px;
+    padding: 10px;
+    gap: 10px;
 }
 
-.new-password-input{
-
+.new-password-input {
     text-align: center;
     width: 300px;
     padding: 10px 0px;
     background-color: transparent;
-    border: 2px solid #ccc;  
+    border: 2px solid #ccc;
     border-radius: 10px;
-    padding: 8px; 
-    font-size: 16px; 
+    padding: 8px;
+    font-size: 16px;
 }
 
 .input {
-    
-    border: 1px solid #ccc; 
-    border-right: none; 
-    padding: 10px 15px; 
-    border-radius: 20px 0 0 20px; 
+    border: 1px solid #ccc;
+    border-right: none;
+    padding: 10px 15px;
+    border-radius: 20px 0 0 20px;
     text-align: left;
-    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1); 
-    font-size: 16px; 
-
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    font-size: 16px;
 }
 
 .input-btn {
-    background-color: #019f55; 
-    border: 1px solid #019f55; 
-    border-left: none; 
-    padding: 10px 20px; 
+    background-color: #019f55;
+    border: 1px solid #019f55;
+    border-left: none;
+    padding: 10px 20px;
     color: white;
     text-align: center;
     cursor: pointer;
-    border-radius: 0 20px 20px 0; 
-    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1); 
-    font-size: 16px; 
-
+    border-radius: 0 20px 20px 0;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    font-size: 16px;
 }
 
 .removeBtn {
-    background-color: red; 
-    color: white; 
-    padding: 10px 15px; 
-    border: none; 
-    border-radius: 5px; 
-    cursor: pointer; 
+    background-color: red;
+    color: white;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
     margin-right: 10px;
-    font-size: 16px; 
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); 
-    margin-left: auto; 
-
+    font-size: 16px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    margin-left: auto;
 }
 
 .check {
     display: flex;
-    align-items: center; 
-    width: 100%; 
+    align-items: center;
+    width: 100%;
 }
 
 .bullet {
-    height: 10px; 
-    width: 10px; 
-    background-color: #555; 
-    border-radius: 50%; 
+    height: 10px;
+    width: 10px;
+    background-color: #555;
+    border-radius: 50%;
 }
 
 .item {
-    display: flex; 
-    align-items: center; 
+    display: flex;
+    align-items: center;
     box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.2);
-    border-radius: 10px; 
-    padding: 10px; 
-    gap: 10px; 
+    border-radius: 10px;
+    padding: 10px;
+    gap: 10px;
 }
 
-.password-container{
-
+.password-container {
     padding: 4rem 20rem;
     text-align: center;
     display: flex;
-    flex-direction: column;   
-    align-items: center;      
-    justify-content: center;  
-
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
 }
 
-.password-list{
+.password-list {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -535,16 +550,13 @@ body {
     font-size: 18px;
     display: flex;
     flex-direction: column;
-
 }
 
-.password-items{
-    
+.password-items {
     padding: 1.5rem;
     width: 100%;
     border-radius: 10px;
     display: flex;
     flex-direction: column;
     gap: 20px;
-
 }
