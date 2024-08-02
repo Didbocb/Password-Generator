@@ -46,24 +46,27 @@ body {
 .generate-container,
 .password-container {
     padding: 2rem;
-    background-color: rgba(255, 255, 255, 0.1);
-    border-radius: 25px;
-    box-shadow: var(--dark-box-shadow);
     margin: 1rem;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border-radius: 25px;
+    box-shadow: var(--box-shadow);
     width: 100%;
-    max-width: 600px;
+    max-width: 1000px;
 }
-
 
 @media (max-width: 992px) {
     .row {
         flex-direction: column;
         align-items: center;
     }
-
     .generate-container,
     .password-container {
         margin-bottom: 2rem;
+        width: 90%; /* Adjust width for better fit on smaller screens */
     }
 }
 
@@ -474,6 +477,7 @@ body {
 .new-password-container {
     display: flex;
     margin: 1rem 0;
+    width: 100%;
 }
 
 .passwords {
@@ -490,24 +494,86 @@ body {
     color: var(--text-color);
     display: flex;
     align-items: center;
+    justify-content: space-between;
     box-shadow: var(--box-shadow);
     border-radius: 10px;
-    padding: 10px;
-    gap: 10px;
-    position: relative;
-    overflow: hidden; /* Add this line to hide overflowing content */
-    justify-content: space-between;
+    padding: 15px;
+    margin-bottom: 15px;
 }
 
-.password .removeBtn,
-.password .password-name,
-.password .password-text,
 .password .password-content {
     flex: 1;
     display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 0px 50px;
+    flex-direction: column;
+    align-items: flex-start;
+    overflow: hidden;
+    margin-right: 15px;
+}
+
+.password .password-name,
+.password .password-text {
+    word-break: break-all;
+}
+
+.password .removeBtn,
+.password .toggleBtn {
+    padding: 10px 15px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 14px;
+    margin-left: 10px;
+    white-space: nowrap;
+}
+
+.password .password-text {
+    display: none; /* Hide the password text by default */
+}
+
+.password .toggleBtn.active + .password-content .password-text {
+    display: block; /* Show the password text when toggle button is active */
+}
+
+#password-input {
+    flex-grow: 1;
+    margin-right: 10px;
+}
+
+#new-password-btn {
+    white-space: nowrap;
+}
+
+/* Media query for smaller screens */
+@media (max-width: 768px) {
+    .password {
+        flex-direction: column;
+        align-items: stretch;
+    }
+    .password-content {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        width: 100%;
+    }
+    .password .removeBtn,
+    .password .toggleBtn {
+        width: 100%;
+        margin-left: 0;
+        margin-top: 5px;
+    }
+    
+    /* Adjustments for the save button and password name input */
+    .new-password-container {
+        flex-direction: column;
+    }
+    #password-input {
+        width: 100%;
+        margin-right: 0;
+        margin-bottom: 10px;
+    }
+    #new-password-btn {
+        width: 100%;
+    }
 }
 
 .new-password-input {
@@ -568,45 +634,27 @@ body {
 }
 
 .password .removeBtn {
-    flex-shrink: 0;
-    padding: 10px; /* Adjust padding */
-    background-color: red;
-    color: var(--light-text-color);
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    font-size: 16px;
-    box-shadow: var(--box-shadow);
+    background-color: #ff4d4d;
+    color: white;
 }
 
 .password .toggleBtn {
-    padding: 10px; /* Adjust padding */
-    background-color: grey;
-    color: var(--light-text-color);
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    font-size: 16px;
-    box-shadow: var(--box-shadow);
+    background-color: #4d4d4d;
+    color: white;
 }
 
 .password .password-name {
-    overflow: hidden; /* Hide overflowing content */
-    text-overflow: ellipsis; /* Add ellipsis for overflow */
-    white-space: nowrap; /* Prevent text from wrapping */
+    font-weight: bold;
+    margin-bottom: 5px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 100%;
 }
 
 .password .password-content {
     flex-direction: column; /* Adjust flex direction */
     overflow: hidden; /* Hide overflowing content */
-}
-
-.password .password-text {
-    display: none; /* Hide the password text by default */
-}
-
-.password .toggleBtn.active + .password-content .password-text {
-    display: block; /* Show the password text when toggle button is active */
 }
 
 .check {
@@ -646,11 +694,8 @@ body {
 }
 
 .password-list {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
     width: 100%;
-    max-height: 100%;
+    max-height: 500px;
     overflow-y: auto;
     padding: 1rem;
     margin-top: 1rem;

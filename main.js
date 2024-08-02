@@ -39,53 +39,39 @@ function displayPasswords(userId, passwords) {
 
   // get the HTML element that will contain the todo items
   const passwordsContainer = document.querySelector(".passwords");
-  passwordsContainer.innerHTML = ""; // clear/empty the items container
+  passwordsContainer.innerHTML = "";
 
-  // iterate through all todo items, creating a UI component for each item
   passwords.forEach((element) => {
-    // creates the main <div> that holds the todo item
     let newPassword = null;
     const itemDiv = document.createElement("div");
     itemDiv.className = "password";
 
-    // creates a <div> for the bullet
-    const bulletDiv = document.createElement("div");
-    bulletDiv.className = "bullet";
-
-    // creates the <div> that holds the text for the todo item
+    // creates the <div> that holds the text for the password item
     const passwordName = document.createElement("div");
     passwordName.className = "password-name";
-    passwordName.textContent = element.passwordText; // Assign the correct value to the textContent property
-
-    // creates a <div> for the bullet
-    const bulletDiv2 = document.createElement("div");
-    bulletDiv2.className = "bullet";
+    passwordName.textContent = element.passwordText;
 
     window.addEventListener('passwordGenerated', (event) => {
-      // The generated password is in event.detail
       newPassword = event.detail;
     });
     newPassword = document.createElement("div");
     newPassword.className = "password-code";
     newPassword.textContent = element.passwordCode;
 
-    // creates the remove button for the todo item
+    // creates the remove button for the password item
     const removeButton = document.createElement("button");
     removeButton.textContent = "Remove";
     removeButton.className = "removeBtn";
 
-    // functionality for the remove button
     removeButton.onclick = () => {
-      deletePassword(userId, element.uid); // handles deleting the list item document in the database
-      fetchAndDisplayAllPasswords(userId); // re-fetch the data and update UI since we deleted a list item
+      deletePassword(userId, element.uid);
+      fetchAndDisplayAllPasswords(userId);
     };
-
-    // inside the displayPasswords function
 
     // creates a <div> to hold the password name
     const passwordNameDiv = document.createElement("div");
     passwordNameDiv.className = "password-name";
-    passwordNameDiv.textContent = element.passwordText; // Assign the correct value to the textContent property
+    passwordNameDiv.textContent = element.passwordText;
 
     // creates a <div> to hold the "Show Password" button and the password text
     const passwordContentDiv = document.createElement("div");
@@ -99,38 +85,33 @@ function displayPasswords(userId, passwords) {
     // creates a <div> to hold the password text
     const passwordTextDiv = document.createElement("div");
     passwordTextDiv.className = "password-text";
-    passwordTextDiv.style.display = "none"; // Initially hide the password text
+    passwordTextDiv.style.display = "none";
 
     // creates a hidden input field to store the actual password
     const hiddenInput = document.createElement("input");
     hiddenInput.type = "hidden";
     hiddenInput.value = element.passwordCode;
 
-    // functionality for the toggle button
     toggleButton.onclick = () => {
       if (passwordTextDiv.style.display === "none") {
-        passwordTextDiv.textContent = hiddenInput.value; // Set the password text
-        passwordTextDiv.style.display = "block"; // Show the password text
+        passwordTextDiv.textContent = hiddenInput.value;
+        passwordTextDiv.style.display = "block";
         toggleButton.textContent = "Hide Password";
       } else {
-        passwordTextDiv.textContent = ""; // Clear the password text
-        passwordTextDiv.style.display = "none"; // Hide the password text
+        passwordTextDiv.textContent = "";
+        passwordTextDiv.style.display = "none";
         toggleButton.textContent = "Show Password";
       }
     };
 
-    // appends the toggle button and password text to the password content <div>
     passwordContentDiv.appendChild(toggleButton);
     passwordContentDiv.appendChild(passwordTextDiv);
 
-    // appends the password name, password content, and remove button to the todo item <div>
-    itemDiv.appendChild(bulletDiv);
+    // appends the password name, password content, and remove button to the password item <div>
     itemDiv.appendChild(passwordNameDiv);
     itemDiv.appendChild(passwordContentDiv);
     itemDiv.appendChild(removeButton);
 
-
-    // append the todo item <div> to the container that holds all the todo items
     passwordsContainer.appendChild(itemDiv);
   });
 }
